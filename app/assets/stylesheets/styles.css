@@ -10247,3 +10247,25 @@ body {
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
 }
+
+.login-flash-message {
+  text-align: center;
+  color: red;
+}
+
+.error-flash-message{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    background-color: #f3c0c0;
+    border-color: #f3c0c0;
+    color: #3e3a3a;
+}
+
+.sucsess-flash-message{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  background-color: #bde9ff;
+  border-color: #bde9ff;
+  color: #4c6977;
+
+}
