@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     post 'admin/sign_in', to: 'users/sessions#create', as: :admin_session
     delete 'admin/sign_out', to: 'users/sessions#destroy', as: :destroy_admin_session
   end
+
+  resources :orders
 end
