@@ -1,0 +1,62 @@
+<%= render 'users/shared/admin_sidebar' %>
+<%= render 'users/shared/header' %>
+<div id="layoutSidenav_content">
+  <div class="container-fluid">
+      <h1 class="mt-4">記事発注</h1>
+      <% if notice %>
+        <div class="sucsess-flash-message"><%= flash[:notice]%>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+      <% elsif alert %>
+        <div class="error-flash-message"><%= flash[:alert]%>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+      <% end %>
+        <div class="row">
+          <div class="col-xl-6">
+            <div class="card mb-4">
+              <div class="card-header">本日の発注本数</div>
+                <div class="card-body"><%= @exist.count%>本</div>
+            </div>
+          </div>
+        </div>
+      <h2>記事を発注する</h2>
+  <div>
+    <%= link_to "テンプレートをダウンロードする", download_orders_path(format: :csv), class: "btn-flat-border " %>
+  <label >
+    <%= form_tag import_orders_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "発注する" %>
+  </label>
+    <% end %>
+  </div>
+<div class="card mb-4">
+  <div class="card-header">発注履歴</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th>第一キーワード</th>
+              <th>第二キーワード</th>
+              <th>文字数</th>
+              <th>発注日</th>
+              <th>削除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.title %></td>
+                <td><%= order.first_keyword %></td>
+                <td><%= order.second_keyword %></td>
+                <td><%= order.words %></td>
+                <td><%= order.created_at %></td>
+                <td><%= link_to "削除", order_path(order),method: :delete, class: "btn btn-primary" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>

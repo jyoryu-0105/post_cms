@@ -2419,6 +2419,24 @@ textarea.form-control {
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px #C0C0C0;
+  border-radius: 3px;
+  transition: .4s;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.btn-flat-border:hover {
+  background: #C0C0C0;
+  color: white;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .btn {
     transition: none;
