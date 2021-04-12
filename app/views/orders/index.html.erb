@@ -1,8 +1,4 @@
-<% if @user.admin_flg == false %>
-  <%= render 'users/shared/users_sidebar' %>
-<% else %>
-  <%= render 'users/shared/admin_sidebar' %>
-<% end %>
+<%= render 'users/shared/admin_sidebar' %>
 <%= render 'users/shared/header' %>
 <div id="layoutSidenav_content">
   <div class="container-fluid">
@@ -20,17 +16,13 @@
           <div class="col-xl-6">
             <div class="card mb-4">
               <div class="card-header">本日の発注本数</div>
-                <div class="card-body"><%= @exist.count%>本</div>
+                
             </div>
           </div>
         </div>
       <h2>記事を発注する</h2>
   <div>
-    <%= link_to "テンプレートをダウンロードする", download_admins_orders_path(format: :csv), class: "btn btn-primary" %>
-    <%= form_tag import_admins_orders_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "発注する" %>
-    <% end %>
+
   </div>
 <div class="card mb-4">
   <div class="card-header">発注履歴</div>
@@ -48,16 +40,6 @@
             </tr>
           </thead>
           <tbody>
-            <% @orders.each do |order| %>
-              <tr>
-                <td><%= order.title %></td>
-                <td><%= order.first_keyword %></td>
-                <td><%= order.second_keyword %></td>
-                <td><%= order.words %></td>
-                <td><%= order.created_at %></td>
-                <td><%= link_to "削除", admins_order_path(order),method: :delete, class: "btn btn-primary" %></td>
-              </tr>
-            <% end %>
           </tbody>
         </table>
       </div>
