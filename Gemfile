@@ -62,4 +62,7 @@ gem 'pry-rails'
 gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'
+gem 'csv'
+gem 'iconv'
+gem 'roo'
 

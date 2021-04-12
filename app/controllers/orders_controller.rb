@@ -5,6 +5,25 @@ class OrdersController < ApplicationController
   def index
   end
 
+  def download
+    respond_to do |format|
+      format.csv do
+        send_data render_to_string, filename: '発注テンプレート.csv', type: :csv
+      end
+    end
+  end
+
+  def import
+    if params[:file].blank?
+      redirect_to orders_path, alert: '読み込むCSVを選択してください'
+    elsif File.extname(params[:file].original_filename) != ".csv"
+      redirect_to orders_path, alert: 'csvファイルのみ読み込み可能です'
+    else
+    Order.import(params[:file])
+    redirect_to orders_path, notice: '発注が完了しました'
+    end
+  end
+
   private
 
   def checking_admin

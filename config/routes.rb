@@ -14,5 +14,8 @@ Rails.application.routes.draw do
     delete 'admin/sign_out', to: 'users/sessions#destroy', as: :destroy_admin_session
   end
 
-  resources :orders
+  resources :orders do
+    collection { post :import }
+    collection { get :download }
+  end
 end

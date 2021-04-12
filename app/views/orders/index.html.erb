@@ -16,13 +16,17 @@
           <div class="col-xl-6">
             <div class="card mb-4">
               <div class="card-header">本日の発注本数</div>
-                
+                <div class="card-body">あああああ本</div>
             </div>
           </div>
         </div>
       <h2>記事を発注する</h2>
   <div>
-
+    <%= link_to "テンプレートをダウンロードする", download_orders_path(format: :csv), class: "btn btn-primary" %>
+    <%= form_tag import_orders_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "発注する" %>
+    <% end %>
   </div>
 <div class="card mb-4">
   <div class="card-header">発注履歴</div>
