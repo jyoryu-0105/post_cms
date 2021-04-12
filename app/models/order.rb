@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :user
+  has_one :apply
 
   with_options presence: true do
     validates :title
