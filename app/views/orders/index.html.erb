@@ -51,6 +51,7 @@
                 <td><%= order.second_keyword %></td>
                 <td><%= order.words %></td>
                 <td><%= order.created_at %></td>
+                <td><%= link_to "削除", order_path(order),method: :delete, class: "btn btn-primary" %></td>
               </tr>
             <% end %>
           </tbody>

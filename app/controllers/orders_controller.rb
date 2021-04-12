@@ -7,6 +7,13 @@ class OrdersController < ApplicationController
     @exist = Order.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day)
   end
 
+  def destroy
+    order = Order.find(params[:id])
+    if order.destroy
+      redirect_to orders_path, notice:"削除が完了しました"
+    end
+  end
+
   def download
     respond_to do |format|
       format.csv do
