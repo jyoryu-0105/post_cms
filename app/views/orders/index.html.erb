@@ -22,10 +22,12 @@
         </div>
       <h2>記事を発注する</h2>
   <div>
-    <%= link_to "テンプレートをダウンロードする", download_orders_path(format: :csv), class: "btn btn-primary" %>
+    <%= link_to "テンプレートをダウンロードする", download_orders_path(format: :csv), class: "btn-flat-border " %>
+  <label >
     <%= form_tag import_orders_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "発注する" %>
+  </label>
     <% end %>
   </div>
 <div class="card mb-4">
