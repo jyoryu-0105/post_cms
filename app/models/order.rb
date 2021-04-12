@@ -1,6 +1,17 @@
 class Order < ApplicationRecord
   belongs_to :user
 
+  with_options presence: true do
+    validates :title
+    validates :first_keyword
+    validates :second_keyword
+    validates :third_keyword
+    validates :fourth_keyword
+    validates :fifth_keyword
+    validates :words, format: { with: /\d{5}/, message: 'を入力してください' }
+    validates :price, format: { with: /\d{5}/, message: 'を入力してください' }
+  end
+  
   def self.import(file)
     CSV.foreach(file.path, headers: true, encoding: 'Shift_JIS:UTF-8') do |row|
       order = find_by(id: row['id']) || new
