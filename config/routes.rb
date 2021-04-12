@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     collection { post :import }
     collection { get :download }
   end
+
+  resource :applies
 end
