@@ -6,7 +6,7 @@ class AppliesController < ApplicationController
   end
 
   def new
-    @orders = Order.all
+    @orders = Order.all - Order.joins(:apply)
   end
 
   def create
