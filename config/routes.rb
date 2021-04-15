@@ -20,5 +20,5 @@ Rails.application.routes.draw do
     collection { get :download }
   end
 
-  resources :applies, only: [:index, :new, :create] 
+  resources :applies, only: [:index, :new, :create, :destroy] 
 end

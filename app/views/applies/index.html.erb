@@ -39,7 +39,7 @@
                 <td><%= apply.order.second_keyword %></td>
                 <td><%= apply.order.words %></td>
                 <td><%= apply.created_at %></td>
-                <td><%= link_to "キャンセル", "#", class: "btn btn-primary" %></td>
+                <td><%= link_to "キャンセル", apply_path(apply),method: :delete, class: "btn btn-primary" %></td>
               </tr>
             <% end %>
           </tbody>
