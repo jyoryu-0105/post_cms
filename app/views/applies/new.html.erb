@@ -1,0 +1,51 @@
+<% if @user.admin_flg == false %>
+  <%= render 'users/shared/users_sidebar' %>
+<% else %>
+  <%= render 'users/shared/admin_sidebar' %>
+<% end %>
+<%= render 'users/shared/header' %>
+<div id="layoutSidenav_content">
+  <div class="container-fluid">
+      <h1 class="mt-4">応募可能記事一覧</h1>
+      <% if notice %>
+        <div class="sucsess-flash-message"><%= flash[:notice]%>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+      <% elsif alert %>
+        <div class="error-flash-message"><%= flash[:alert]%>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+      <% end %>
+<div class="card mb-4">
+  <div class="card-header">記事情報</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th>第一キーワード</th>
+              <th>第二キーワード</th>
+              <th>文字数</th>
+              <th>発注日</th>
+              <th>応募</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= form_with model: @apply, url: applies_path , id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.title %></td>
+                <td><%= order.first_keyword %></td>
+                <td><%= order.second_keyword %></td>
+                <td><%= order.words %></td>
+                <td><%= order.created_at %></td>
+                <%= f.hidden_field :order_id, value: order.id %>
+                <td><%= f.submit "応募" ,class: "btn btn-primary" %></td>
+              </tr>
+            <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>

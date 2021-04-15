@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'users#index'
+
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
@@ -18,4 +19,6 @@ Rails.application.routes.draw do
     collection { post :import }
     collection { get :download }
   end
+
+  resources :applies, only: [:index, :new, :create, :destroy] 
 end
