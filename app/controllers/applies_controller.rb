@@ -1,6 +1,6 @@
 class AppliesController < ApplicationController
+  before_action :applied
   before_action :set_apply, only: [:destroy]
-
   def index
     @applies = Apply.where(user_id: current_user.id)
   end
@@ -36,4 +36,7 @@ class AppliesController < ApplicationController
     @apply = Apply.find(params[:id])
   end
 
+  def applied
+    redirect_to new_apply_path, alert: 'この記事はすでに応募されました。別の記事をお探しください。' if Apply.exists?(order_id: params[:order_id])
+  end
 end
