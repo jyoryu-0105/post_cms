@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_083405) do
+ActiveRecord::Schema.define(version: 2021_04_16_090000) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 2021_04_16_083405) do
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "title"
-    t.integer "publish_date"
-    t.integer "post_status"
+    t.date "publish_date"
+    t.integer "post_status", default: 0
     t.bigint "user_id", null: false
     t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
