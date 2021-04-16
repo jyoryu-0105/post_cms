@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :applies, only: [:index, :new, :create, :destroy] 
+  resources :posts do
+  resources :post_content
+  end 
 end
