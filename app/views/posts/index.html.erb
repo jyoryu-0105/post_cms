@@ -39,7 +39,11 @@
                 <td><%= apply.order.second_keyword %></td>
                 <td><%= apply.order.words %></td>
                 <td><%= apply.created_at %></td>
-                <td><%= link_to "作成開始", '#', class: "btn btn-primary" %></td>
+                <% if @post.exists? %>
+                <td><%= link_to "下書き画面", '#', class: "btn btn-primary" %></td>
+                <% else %>
+                <td><%= link_to "作成開始", new_post_path, class: "btn btn-primary" %></td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>

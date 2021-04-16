@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @applies = Apply.where(user_id: current_user.id)
+    @post = Post.joins(:order)
   end
 
   def new
