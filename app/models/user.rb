@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :applies
+  has_many :posts
   validates :nickname, presence: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'は半角英数字を混合して使用してください' }
 end
