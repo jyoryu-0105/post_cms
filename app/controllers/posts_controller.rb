@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :already_created
-  
+
   def index
     @applies = Apply.where(user_id: current_user.id)
   end
@@ -17,6 +17,10 @@ class PostsController < ApplicationController
     else
       redirect_to new_post_path, alert: '記事作成に失敗しました。もう一度お試しください'
     end
+  end
+
+  def draft
+    @posts = Post.where(user_id: current_user.id, post_status: 0)
   end
 
   private

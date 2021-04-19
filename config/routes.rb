@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :applies, only: [:index, :new, :create, :destroy] 
   resources :posts do
+    collection { get :draft }
   resources :post_content
   end 
 end
