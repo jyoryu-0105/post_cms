@@ -24,9 +24,9 @@ class PostsController < ApplicationController
 
   def update
       if @post.update(post_content_params)
-        redirect_to new_post_path, notice: '正常に保存されました。'
+        redirect_to edit_post_path, notice: '正常に保存されました。'
       else
-        redirect_to new_post_path, alert: '更新に失敗しました。もう一度お試しください'
+        redirect_to edit_post_path, alert: '更新に失敗しました。もう一度お試しください'
       end
   end
 
