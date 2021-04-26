@@ -7,17 +7,7 @@
 <%= render 'users/shared/header' %>
 <div id="layoutSidenav_content">
   <div class="container-fluid">
-      <h1 class="mt-4">記事作成画面</h1>
-      <% if notice %>
-        <div class="sucsess-flash-message"><%= flash[:notice]%>
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-        </div>
-      <% elsif alert %>
-        <div class="error-flash-message"><%= flash[:alert]%>
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-        </div>
-      <% end %>
-<div class="card mb-4">
+      <h1 class="mt-4">記事作成画面</h1><div class="card mb-4">
   <div class="card-header">記事情報</div>
     <div class="card-body">
       <div class="table-responsive">
@@ -27,14 +17,23 @@
               <th>タイトル</th>
               <th>第一キーワード</th>
               <th>第二キーワード</th>
+              <th>第三キーワード</th>
+              <th>第四キーワード</th>
               <th>文字数</th>
-              <th>応募日</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
-              
+              <tr>
+                <td><%= @post.order.title %></td>
+                <td><%= @post.order.first_keyword %></td>
+                <td><%= @post.order.second_keyword %></td>
+                <td><%= @post.order.third_keyword %></td>
+                <td><%= @post.order.fourth_keyword %></td>
+                <td><%= @post.order.words %></td>
+              </tr>
           </tbody>
         </table>
       </div>
-    </div>
+      </div>
+      </div>
+      <%= render 'users/shared/form', post: @post %>
