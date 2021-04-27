@@ -46,5 +46,11 @@
       </div>
       </div>
       </div>
-      <%= render 'users/shared/form', post: @post %>
-      <%= link_to "記事を納品する",  deliver_post_path , method: :patch, class: "btn-flat-border " %>
+  <div class="card mb-4">
+  <div class="card-header">記事の中身</div>
+    <div class="card-body">
+      <%= @post.content %>
+    </div>
+  </div>
+      <%= link_to "差し戻す",  declined_post_path , method: :patch, class: "btn-flat-border " %>
+      <%= link_to "公開する",  publish_post_path , method: :patch, class: "btn-flat-border " %>

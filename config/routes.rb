@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   resources :applies, only: [:index, :new, :create, :destroy] 
   resources :posts do
     get 'draft', on: :collection
-    patch 'delivered', on: :member
+    get 'delivered', on: :collection
+    get 'published', on: :collection
+    patch 'deliver', on: :member
+    patch 'declined', on: :member
+    patch 'publish', on: :member
   end
 end
