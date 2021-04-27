@@ -47,3 +47,4 @@
       </div>
       </div>
       <%= render 'users/shared/form', post: @post %>
+      <%= link_to "記事を納品する",  delivered_post_path , method: :patch, class: "btn-flat-border " %>

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :already_created
-  before_action :set_post, only: [:edit, :update]
+  before_action :set_post, only: [:edit, :update, :delivered]
 
   def index
     @applies = Apply.where(user_id: current_user.id)
@@ -32,6 +32,14 @@ class PostsController < ApplicationController
 
   def draft
     @posts = Post.where(user_id: current_user.id, post_status: 0)
+  end
+
+  def delivered
+    if @post.update_attribute(:post_status, 1)
+      redirect_to draft_posts_path, notice: '正常に納品されました。'
+    else
+      redirect_to edit_post_path, alert: '納品に失敗しました。もう一度お試しください'
+    end
   end
 
   private
