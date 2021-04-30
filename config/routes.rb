@@ -7,13 +7,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  devise_scope :user do
-    get 'admin/sign_up', to: 'users/registrations#new', as: :new_admin_registration
-    post 'admin/sign_up', to: 'users/registrations#create', as: :admin_registration
-    get 'admin/sign_in', to: 'users/sessions#new', as: :new_admin_session
-    post 'admin/sign_in', to: 'users/sessions#create', as: :admin_session
-    delete 'admin/sign_out', to: 'users/sessions#destroy', as: :destroy_admin_session
-  end
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
 
   resources :orders do
     collection { post :import }
