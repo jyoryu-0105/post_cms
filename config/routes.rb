@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   namespace :admins do
     root to: 'admins#index'
+    resources :orders do
+      collection { post :import }
+      collection { get :download }
+    end
   end
 
   namespace :users do
     root to: "users#index"
   end
-
+  
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',

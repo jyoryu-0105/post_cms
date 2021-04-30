@@ -1,6 +1,5 @@
-class OrdersController < ApplicationController
+class Admins::OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :checking_admin
 
   def index
     @orders = Order.all
@@ -10,7 +9,7 @@ class OrdersController < ApplicationController
   def destroy
     order = Order.find(params[:id])
     if order.destroy
-      redirect_to orders_path, notice:"削除が完了しました"
+      redirect_to admins_orders_path, notice:"削除が完了しました"
     end
   end
 
@@ -24,20 +23,13 @@ class OrdersController < ApplicationController
 
   def import
     if params[:file].blank?
-      redirect_to orders_path, alert: '読み込むCSVを選択してください'
+      redirect_to admins_orders_path, alert: '読み込むCSVを選択してください'
     elsif File.extname(params[:file].original_filename) != ".csv"
-      redirect_to orders_path, alert: 'csvファイルのみ読み込み可能です'
+      redirect_to admins_orders_path, alert: 'csvファイルのみ読み込み可能です'
     else
     Order.import(params[:file])
-    redirect_to orders_path, notice: '発注が完了しました'
+    redirect_to admins_orders_path, notice: '発注が完了しました'
     end
   end
 
-  private
-
-  def checking_admin
-    if @user.admin_flg == false
-      redirect_to root_path
-    end
-  end 
 end
