@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     root to: "users#index"
+    resources :applies, only: [:index, :new, :create, :destroy] 
   end
   
   devise_for :users, controllers: {
@@ -23,7 +24,6 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
 
-  resources :applies, only: [:index, :new, :create, :destroy] 
   resources :posts do
     get 'draft', on: :collection
     get 'delivered', on: :collection

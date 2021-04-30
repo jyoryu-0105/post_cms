@@ -1,8 +1,4 @@
-<% if @user.admin_flg == false %>
-  <%= render 'users/shared/users_sidebar' %>
-<% else %>
-  <%= render 'users/shared/admin_sidebar' %>
-<% end %>
+<%= render 'users/shared/users_sidebar' %>
 <%= render 'users/shared/header' %>
 <div id="layoutSidenav_content">
   <div class="container-fluid">
@@ -32,7 +28,7 @@
             </tr>
           </thead>
           <tbody>
-            <%= form_with model: @apply, url: applies_path , id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+            <%= form_with model: @apply, url: users_applies_path , id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
             <% @orders.each do |order| %>
               <tr>
                 <td><%= order.title %></td>

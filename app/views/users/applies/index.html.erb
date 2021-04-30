@@ -1,9 +1,5 @@
 
-<% if @user.admin_flg == false %>
-  <%= render 'users/shared/users_sidebar' %>
-<% else %>
-  <%= render 'users/shared/admin_sidebar' %>
-<% end %>
+<%= render 'users/shared/users_sidebar' %>
 <%= render 'users/shared/header' %>
 <div id="layoutSidenav_content">
   <div class="container-fluid">
@@ -39,7 +35,7 @@
                 <td><%= apply.order.second_keyword %></td>
                 <td><%= apply.order.words %></td>
                 <td><%= apply.created_at %></td>
-                <td><%= link_to "キャンセル", apply_path(apply),method: :delete, class: "btn btn-primary" %></td>
+                <td><%= link_to "キャンセル", users_apply_path(apply),method: :delete, class: "btn btn-primary" %></td>
               </tr>
             <% end %>
           </tbody>
