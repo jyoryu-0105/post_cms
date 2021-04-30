@@ -1,13 +1,9 @@
 
-<% if @user.admin_flg == false %>
-  <%= render 'users/shared/users_sidebar' %>
-<% else %>
-  <%= render 'users/shared/admin_sidebar' %>
-<% end %>
+<%= render 'users/shared/users_sidebar' %>
 <%= render 'users/shared/header' %>
 <div id="layoutSidenav_content">
   <div class="container-fluid">
-      <h1 class="mt-4">未作成の記事一覧</h1>
+      <h1 class="mt-4">下書き記事一覧</h1>
       <% if notice %>
         <div class="sucsess-flash-message"><%= flash[:notice]%>
           <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -33,22 +29,16 @@
             </tr>
           </thead>
           <tbody>
-            <%= form_with model: @post, url: posts_path , id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
-            <% @applies.each do |apply| %>
-              <tr>
-                <td><%= apply.order.title %></td>
-                <td><%= apply.order.first_keyword %></td>
-                <td><%= apply.order.second_keyword %></td>
-                <td><%= apply.order.words %></td>
-                <td><%= apply.created_at %></td>
-                <%= f.hidden_field :title, value: apply.order.title %>
-                <%= f.hidden_field :order_id, value: apply.order_id %>
-                <td><%= f.submit "作成開始" ,class: "btn btn-primary" %></td>
+              <% @posts.each do |post| %>
+                <td><%= post.order.title %></td>
+                <td><%= post.order.first_keyword %></td>
+                <td><%= post.order.second_keyword %></td>
+                <td><%= post.order.words %></td>
+                <td><%= post.created_at %></td>
+                <td><%= link_to "下書き画面へ", edit_users_post_path(post), class: "btn btn-primary" %></td>
               </tr>
-            <% end %>
             <% end %>
           </tbody>
         </table>
       </div>
     </div>
-    
