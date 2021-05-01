@@ -1,13 +1,8 @@
-
-<% if @user.admin_flg == false %>
-  <%= render 'users/shared/users_sidebar' %>
-<% else %>
-  <%= render 'users/shared/admin_sidebar' %>
-<% end %>
-<%= render 'users/shared/header' %>
+<%= render 'admins/shared/admin_sidebar' %>
+<%= render 'admins/shared/header' %>
 <div id="layoutSidenav_content">
   <div class="container-fluid">
-      <h1 class="mt-4">下書き記事一覧</h1>
+      <h1 class="mt-4">公開済み記事一覧</h1>
       <% if notice %>
         <div class="sucsess-flash-message"><%= flash[:notice]%>
           <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -28,8 +23,6 @@
               <th>第一キーワード</th>
               <th>第二キーワード</th>
               <th>文字数</th>
-              <th>応募日</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -38,7 +31,6 @@
                 <td><%= post.order.first_keyword %></td>
                 <td><%= post.order.second_keyword %></td>
                 <td><%= post.order.words %></td>
-                <td><%= post.created_at %></td>
                 <td><%= link_to "記事を確認する", post_path(post), class: "btn btn-primary" %></td>
               </tr>
             <% end %>
