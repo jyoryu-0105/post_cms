@@ -5,11 +5,6 @@ class Admins::PostsController < ApplicationController
     @applies = Apply.where(user_id: current_user.id)
   end
 
-  def new
-    @applies = Apply.where(user_id: current_user.id)
-  end
-
-
   def show
   end
 
@@ -41,10 +36,6 @@ class Admins::PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
-  end
-
-  def post_params
-    params.permit(:title, :user_id, :order_id).merge(title: params[:title], user_id: current_user.id, order_id: params[:order_id])
   end
 
   def declined_params
