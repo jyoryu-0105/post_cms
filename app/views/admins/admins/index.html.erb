@@ -1,91 +1,64 @@
 <%= render 'admins/shared/admin_sidebar' %>
 <%= render 'admins/shared/header' %>
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
-                        <h1 class="mt-4">Dashboard</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Primary Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Warning Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area mr-1"></i>
-                                        Area Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar mr-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
-                                DataTable Example
-                            </div>
-                            <div class="card-body">
-                            </div>
-                        </div>
+
+<div id="layoutSidenav_content">
+    <div class="container-fluid">
+        <h1 class="mt-4">ダッシュボード</h1>
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">本日の発注本数</div>
+                            <div class="card-body"><%= @orders.count%>本</div>
                     </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">本日の応募本数</div>
+                            <div class="card-body"><%= @applies.count%>本</div>
                     </div>
-                </footer>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">本日の納品本数</div>
+                            <div class="card-body"><%= @delivered.count%>本</div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">本日の公開本数</div>
+                            <div class="card-body"><%= @published.count%>本</div>
+                    </div>
+                </div>
+            </div>
+        <div class="card mb-4">
+            <div class="card-header">検修待ち一覧</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>タイトル</th>
+                                    <th>第一キーワード</th>
+                                    <th>第二キーワード</th>
+                                    <th>文字数</th>
+                                    <th>応募日</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <% @posts.each do |post| %>
+                                    <td><%= post.order.title %></td>
+                                    <td><%= post.order.first_keyword %></td>
+                                    <td><%= post.order.second_keyword %></td>
+                                    <td><%= post.order.words %></td>
+                                    <td><%= link_to "記事を確認する", admins_post_path(post), class: "btn btn-primary" %></td>
+                                </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</div>
