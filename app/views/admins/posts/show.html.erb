@@ -52,3 +52,5 @@
       <%= @post.content %>
     </div>
   </div>
+<%= link_to "差し戻す",  declined_admins_post_path , method: :patch, class: "btn-flat-border " %>
+<%= link_to "公開する",  publish_admins_post_path , method: :patch, class: "btn-flat-border " %>

@@ -27,22 +27,14 @@ class PostsController < ApplicationController
 
   def update
       if @post.update(post_content_params)
-        redirect_to edit_post_path, notice: '正常に保存されました。'
+        redirect_to edit_users_post_path, notice: '正常に保存されました。'
       else
-        redirect_to edit_post_path, alert: '更新に失敗しました。もう一度お試しください'
+        redirect_to edit_users_post_path, alert: '更新に失敗しました。もう一度お試しください'
       end
   end
 
   def draft
     @posts = Post.where(user_id: current_user.id, post_status: 0)
-  end
-
-  def deliver
-    if @post.update_attribute(post_status: 1)
-      redirect_to draft_posts_path, notice: '正常に納品されました。'
-    else
-      redirect_to edit_post_path, alert: '納品に失敗しました。もう一度お試しください。'
-    end
   end
 
   def declined

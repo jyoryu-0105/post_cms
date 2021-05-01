@@ -4,20 +4,20 @@
       <div class="sb-sidenav-menu">
         <div class="nav">
           <div class="sb-sidenav-menu-heading">TOP</div>
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/users">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 トップページ
             </a>
           <div class="sb-sidenav-menu-heading">記事管理</div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
               <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                応募
+                発注
               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
           <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-              <%= link_to '応募', new_users_apply_path, class:"nav-link" %>
-              <%= link_to '応募済み記事一覧', users_applies_path, class:"nav-link" %>
+              <%= link_to '発注ページ', admins_orders_path , class:"nav-link" %>
+              <a class="nav-link" href="layout-sidenav-light.html">発注済み記事一覧</a>
             </nav>
           </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -28,18 +28,18 @@
             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                  未公開記事一覧
+                  記事一覧
                   <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
               <nav class="sb-sidenav-menu-nested nav">
-                <%= link_to '応募済み記事', new_users_post_path, class:"nav-link" %>
-                <%= link_to '下書き記事', draft_users_posts_path, class:"nav-link" %>
-                <%= link_to '納品済み記事', "#" , class:"nav-link" %>
+                <a class="nav-link" href="register.html">未応募記事</a>
+                <%= link_to '納品済み記事', delivered_admins_posts_path , class:"nav-link" %>
+                <%= link_to '公開済み記事', published_admins_posts_path , class:"nav-link" %>
               </nav>
             </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-              公開記事一覧
+              非公開記事一覧
               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
@@ -54,17 +54,17 @@
           <div class="sb-sidenav-menu-heading">管理</div>
             <a class="nav-link" href="charts.html">
               <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                設定
+                ユーザー管理
             </a>
             <a class="nav-link" href="tables.html">
               <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                マニュアル
+                マニュアル管理
             </a>
           </div>
       </div>
       <div class="sb-sidenav-footer">
       <div class="small"></div>
-      ユーザー側の画面
+      管理者側の画面
     </div>
   </nav>
 </div>
