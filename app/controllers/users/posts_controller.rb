@@ -34,6 +34,11 @@ class Users::PostsController < ApplicationController
     end
   end
 
+  def delivered
+    @posts = Post.where(user_id: current_user.id, post_status: 1)
+  end
+
+
   private
 
   def set_post

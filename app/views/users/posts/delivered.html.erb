@@ -1,6 +1,5 @@
-
-<%= render 'admins/shared/admin_sidebar' %>
-<%= render 'admins/shared/header' %>
+<%= render 'users/shared/users_sidebar' %>
+<%= render 'users/shared/header' %>
 <div id="layoutSidenav_content">
   <div class="container-fluid">
       <h1 class="mt-4">納品済みの記事一覧</h1>
@@ -25,7 +24,7 @@
               <th>第二キーワード</th>
               <th>文字数</th>
               <th>応募日</th>
-              <th></th>
+              <th>ステータス</th>
             </tr>
           </thead>
           <tbody>
@@ -35,7 +34,7 @@
                 <td><%= post.order.second_keyword %></td>
                 <td><%= post.order.words %></td>
                 <td><%= post.created_at %></td>
-                <td><%= link_to "記事を確認する", admins_post_path(post), class: "btn btn-primary" %></td>
+                <td>公開待ち</td>
               </tr>
             <% end %>
           </tbody>

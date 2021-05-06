@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :applies, only: [:index, :new, :create, :destroy] 
     resources :posts do 
       get 'draft', on: :collection
+      get 'delivered', on: :collection
       patch 'deliver', on: :member
     end
   end
