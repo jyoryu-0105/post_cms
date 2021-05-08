@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :deliver, :declined, :publish]
 
   def index
-    @applies = Apply.where(user_id: current_user.id)
+    @posts = Post.where(post_status: 2)
   end
 
   def new
