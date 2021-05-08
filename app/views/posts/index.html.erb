@@ -22,11 +22,20 @@
         </div>
     </div>
 </header>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-        <%= @post.content%>
-        </div>
+            <div class="post-preview">
+                <% @posts.each do |post| %>
+                <h2 class="post-title"><%= link_to post.title, post_path(post) %></h2>
+                <span class="post-meta">
+                    Posted on <%= post.publish_date %>
+                </span>
+                <hr />
+                <% end %>
+            </div>
+            <div class="clearfix"><a class="post-btn post-btn-primary float-right" href="#!">Older Posts →</a></div>
         </div>
     </div>
 </div>
