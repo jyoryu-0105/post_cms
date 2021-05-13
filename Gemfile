@@ -75,4 +75,5 @@ gem 'csv'
 gem 'iconv'
 gem 'roo'
 gem 'actiontext'
+gem "aws-sdk-s3", require: false
 
