@@ -8,6 +8,5 @@ FactoryBot.define do
     fifth_keyword      { Faker::Lorem.words(number: 1) }
     words              { Faker::Number.number(digits: 5)}
     price              { Faker::Number.number(digits: 5)}
-    association :user
   end
 end

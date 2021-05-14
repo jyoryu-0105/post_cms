@@ -4,7 +4,7 @@
       <div class="sb-sidenav-menu">
         <div class="nav">
           <div class="sb-sidenav-menu-heading">TOP</div>
-            <a class="nav-link" href="/users">
+            <a class="nav-link" href="/admins">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 トップページ
             </a>
@@ -33,7 +33,6 @@
                 </a>
             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="register.html">未応募記事</a>
                 <%= link_to '納品済み記事', delivered_admins_posts_path , class:"nav-link" %>
                 <%= link_to '公開済み記事', published_admins_posts_path , class:"nav-link" %>
               </nav>
@@ -44,19 +43,16 @@
             </a>
             <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="401.html">401 Page</a>
-                <a class="nav-link" href="404.html">404 Page</a>
-                <a class="nav-link" href="500.html">500 Page</a>
               </nav>
             </div>
               </nav>
           </div>
           <div class="sb-sidenav-menu-heading">管理</div>
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="#">
               <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                 ユーザー管理
             </a>
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link" href="#">
               <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 マニュアル管理
             </a>

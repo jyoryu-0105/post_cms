@@ -15,4 +15,5 @@ class Admins::AdminsController < ApplicationController
   def set_delivered_post
     @posts = Post.where(post_status: 1)
   end
+
 end

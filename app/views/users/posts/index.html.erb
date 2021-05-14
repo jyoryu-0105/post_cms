@@ -6,39 +6,41 @@
       <h1 class="mt-4">応募した記事一覧</h1>
       <% if notice %>
         <div class="sucsess-flash-message"><%= flash[:notice]%>
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
         </div>
       <% elsif alert %>
         <div class="error-flash-message"><%= flash[:alert]%>
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
         </div>
       <% end %>
-<div class="card mb-4">
-  <div class="card-header">記事情報</div>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>タイトル</th>
-              <th>第一キーワード</th>
-              <th>第二キーワード</th>
-              <th>文字数</th>
-              <th>応募日</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-              <% @applies.each do |apply| %>
-                <td><%= apply.order.title %></td>
-                <td><%= apply.order.first_keyword %></td>
-                <td><%= apply.order.second_keyword %></td>
-                <td><%= apply.order.words %></td>
-                <td><%= apply.created_at %></td>
-                <td><%= link_to "下書き画面へ", '#', class: "btn btn-primary" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+    <div class="card mb-4">
+      <div class="card-header">記事情報</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>タイトル</th>
+                  <th>第一キーワード</th>
+                  <th>第二キーワード</th>
+                  <th>文字数</th>
+                  <th>応募日</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                  <% @applies.each do |apply| %>
+                    <td><%= apply.order.title %></td>
+                    <td><%= apply.order.first_keyword %></td>
+                    <td><%= apply.order.second_keyword %></td>
+                    <td><%= apply.order.words %></td>
+                    <td><%= apply.created_at %></td>
+                    <td><%= link_to "下書き画面へ", '#', class: "btn btn-primary" %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
     </div>
+  </div>
+</div>

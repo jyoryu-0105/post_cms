@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::Base
   before_action :set_user
+  before_action :set_admin
   before_action :basic_auth
 
   def set_user
     @user = current_user
+  end
+
+    def set_admin
+    @admin = current_admin
   end
 
   private
