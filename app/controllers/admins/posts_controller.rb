@@ -74,6 +74,6 @@ class Admins::PostsController < ApplicationController
   end
 
   def post_content_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content,images: [])
   end
 end
