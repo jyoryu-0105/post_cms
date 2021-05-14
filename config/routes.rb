@@ -25,8 +25,10 @@ Rails.application.routes.draw do
       get 'draft', on: :collection
       get 'delivered', on: :collection
       get 'published', on: :collection
+      get 'closed', on: :collection
       patch 'declined', on: :member
       patch 'publish', on: :member
+      patch 'closed', on: :member
     end
 
   end
