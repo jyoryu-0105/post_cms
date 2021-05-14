@@ -6,10 +6,6 @@ RSpec.describe Order, type: :model do
       @order = FactoryBot.build(:order)
     end
 
-    it '必須項目が全てあれば登録できる' do
-      expect(@order).to be_valid
-    end
-
     it 'titleが空では登録できない' do
       @order.title = nil
       @order.valid?
