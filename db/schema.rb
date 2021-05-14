@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_30_092115) do
+ActiveRecord::Schema.define(version: 2021_05_14_043259) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -77,8 +77,6 @@ ActiveRecord::Schema.define(version: 2021_04_30_092115) do
     t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -111,7 +109,6 @@ ActiveRecord::Schema.define(version: 2021_04_30_092115) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "applies", "orders"
   add_foreign_key "applies", "users"
-  add_foreign_key "orders", "users"
   add_foreign_key "posts", "orders"
   add_foreign_key "posts", "users"
 end
