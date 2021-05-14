@@ -35,17 +35,9 @@
               <nav class="sb-sidenav-menu-nested nav">
                 <%= link_to '納品済み記事', delivered_admins_posts_path , class:"nav-link" %>
                 <%= link_to '公開済み記事', published_admins_posts_path , class:"nav-link" %>
+                <%= link_to '非公開記事', closed_admins_posts_path , class:"nav-link" %>
               </nav>
             </div>
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-              非公開記事一覧
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-              <nav class="sb-sidenav-menu-nested nav">
-              </nav>
-            </div>
-              </nav>
           </div>
           <div class="sb-sidenav-menu-heading">管理</div>
             <a class="nav-link" href="#">
