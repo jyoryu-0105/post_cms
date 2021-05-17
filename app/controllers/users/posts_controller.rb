@@ -20,7 +20,7 @@ class Users::PostsController < ApplicationController
   end
 
   def update
-     if @post.update(post_content_params)
+    if @post.update(post_content_params)
       redirect_to edit_admins_post_path, notice: '正常に保存されました。'
     else
       redirect_to edit_admins_post_path, alert: '更新に失敗しました。もう一度お試しください'
@@ -28,6 +28,14 @@ class Users::PostsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @post.update(post_content_params)
+      redirect_to edit_users_post_path, notice: '正常に保存されました。'
+    else
+      redirect_to edit_users_post_path, alert: '更新に失敗しました。もう一度お試しください'
+    end
   end
 
   def draft
@@ -65,7 +73,7 @@ class Users::PostsController < ApplicationController
     redirect_to new_users_post_path, alert: 'この記事はすでに作成が開始されています。' if Post.exists?(order_id: params[:order_id])
   end
 
-    def post_content_params
+  def post_content_params
     params.require(:post).permit(:content)
   end
 end
