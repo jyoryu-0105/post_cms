@@ -43,5 +43,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts , only: [:index, :show]
+  resources :posts , only: [:index, :show, :update]
 end
