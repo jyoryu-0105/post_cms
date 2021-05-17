@@ -1,5 +1,5 @@
 class Admins::PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :declined, :publish, :close, :update]
+  before_action :set_post, only: [:show, :edit, :declined, :publish, :close]
 
   def index
     @applies = Apply.where(user_id: current_user.id)
@@ -9,14 +9,6 @@ class Admins::PostsController < ApplicationController
   end
   
   def edit
-  end
-
-  def update
-    if @post.update(post_content_params)
-      redirect_to edit_admins_post_path, notice: '正常に保存されました。'
-    else
-      redirect_to edit_admins_post_path, alert: '更新に失敗しました。もう一度お試しください'
-    end
   end
 
   def declined
@@ -51,7 +43,7 @@ class Admins::PostsController < ApplicationController
     @posts = Post.where(post_status: 2)
   end
 
-  def closed
+    def closed
     @posts = Post.where(post_status: 2)
   end
 
@@ -73,7 +65,4 @@ class Admins::PostsController < ApplicationController
     params.permit(:post_status, :publish_date).merge(post_status: 3, publish_date: nil)
   end
 
-  def post_content_params
-    params.require(:post).permit(:content)
-  end
 end

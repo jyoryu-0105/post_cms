@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :update]
+  before_action :set_post, only: [:show]
 
   def index
     @posts = Post.where(post_status: 2)
@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def show
   end
+
 
   def update
     if @post.update(post_content_params)
